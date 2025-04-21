@@ -1,7 +1,9 @@
 // See https://observablehq.com/framework/config for documentation.
+import MarkdownItContainer from "markdown-it-container";
+
 export default {
   // The project’s title; used in the sidebar and webpage titles.
-  title: "Untitled",
+  title: "Modern IT",
 
   // The pages and sections in the sidebar. If you don’t specify this option,
   // all pages will be listed in alphabetical order. Listing pages explicitly
@@ -22,16 +24,26 @@ export default {
   // The path to the source root.
   root: "src",
 
+  markdownIt: (md) =>
+    md
+      .use(MarkdownItContainer, "card") // ::: card
+      .use(MarkdownItContainer, "tip") // ::: tip
+      .use(MarkdownItContainer, "warning"), // ::: warning
+
+  interpreters: {
+    ".ps1": ["pwsh"]
+  },
+
   // Some additional configuration options and their defaults:
-  // theme: "default", // try "light", "dark", "slate", etc.
+  theme: "default", // try "light", "dark", "slate", etc.
   // header: "", // what to show in the header (HTML)
   // footer: "Built with Observable.", // what to show in the footer (HTML)
   // sidebar: true, // whether to show the sidebar
-  // toc: true, // whether to show the table of contents
-  // pager: true, // whether to show previous & next links in the footer
+  toc: true, // whether to show the table of contents
+  pager: true, // whether to show previous & next links in the footer
   // output: "dist", // path to the output root for build
   // search: true, // activate search
   // linkify: true, // convert URLs in Markdown to links
-  // typographer: false, // smart quotes and other typographic improvements
+  typographer: true // smart quotes and other typographic improvements
   // cleanUrls: true, // drop .html from URLs
 };
