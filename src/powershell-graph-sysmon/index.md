@@ -33,4 +33,15 @@ Show-GraphLayout -Graph $g
 
 This is how it looks like
 
-{{< video type="youtube" id="LuRo8GEwp1w" >}}
+
+# Watch this demo
+
+<iframe 
+  width="560" 
+  height="315" 
+  src="https://www.youtube.com/embed/LuRo8GEwp1w" 
+  title="Visualizing Traffic Flow through Azure Firewall Using PowerShell, Jupyter, and d3js" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+  allowfullscreen>
+</iframe>
