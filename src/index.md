@@ -40,12 +40,14 @@ Whether it’s visualizing traffic through Azure Firewall, scraping SEC Form 4 d
 
 ## 📌 Recent Posts
 
-- [Nmap SMTP Enumeration: Fixing NSE Scripts with ChatGPT](./posts/nmap-smtp)
-- [Agentic AI Simulation in Azure](./posts/agentic-ai)
-- [Visualizing Azure Firewall Traffic with PowerShell & D3](./posts/firewall-visual)
-- [Making Azure CLI and ZScaler Work Together](./posts/zscaler-azure)
+- [Nmap SMTP Enumeration: Fixing NSE Scripts with ChatGPT](./nmap-smtp-user-enum/index.md)
+- [Agentic AI Simulation in Azure](./agentic-ai-infra-sim/index.md)
+- [Visualizing Azure Firewall Traffic with PowerShell & D3](./sankey-d3/index.md)
+- [Making Azure CLI and ZScaler Work Together](./how-to-deal-with-zscaler-and-azcli/index.md)
 
-> You can browse the full list under **[Notebooks](./notebooks)** or explore categories like [PowerShell](./tags/powershell), [Azure](./tags/azure), and [Visualization](./tags/d3js).
+Some of this you can try live:
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/eosfor/scripting-notes)
 
 ---
 
