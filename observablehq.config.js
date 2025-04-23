@@ -21,7 +21,7 @@ export default {
       .use(MarkdownItContainer, "warning"), // ::: warning
 
   interpreters: {
-    ".ps1": ["pwsh"]
+    ".ps1": ["/usr/bin/pwsh"]
   },
 
   // Some additional configuration options and their defaults:
