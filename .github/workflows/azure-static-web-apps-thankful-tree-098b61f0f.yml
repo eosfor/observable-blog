@@ -37,6 +37,7 @@ jobs:
           which pwsh || echo "❌ pwsh not found in PATH"
           pwsh -v
           ls src/basicvis/
+          pwsh src/basicvis/data1.csv.ps1
 
       # 🧪 Optional: Run preprocessing PowerShell script if needed
       # - name: Preprocess data via PowerShell
