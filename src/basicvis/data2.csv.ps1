@@ -1,6 +1,6 @@
 . src/basicvis/helper.ps1
 
-$allData = Import-Csv -Path "tmp/x.allData.csv"
+$allData = Import-Csv -Path "x.allData.csv"
 
 $data2 = $allData |
     # Filter only transactions with non-zero number of shares

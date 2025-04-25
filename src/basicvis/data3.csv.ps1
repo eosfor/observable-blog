@@ -1,6 +1,6 @@
 . src/basicvis/helper.ps1
 
-$allData = Import-Csv -Path "tmp/x.allData.csv"
+$allData = Import-Csv -Path "x.allData.csv"
 
 $data3 = $allData |
     # Filter transactions with shares > 0 and valid date format (YYYY-MM-DD)
