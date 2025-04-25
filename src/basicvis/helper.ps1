@@ -135,28 +135,34 @@ function Convert-Form4XmlToRecord {
         $issuer = $doc.ownershipDocument.issuer.issuerName
         $owner = $doc.ownershipDocument.reportingOwner.reportingOwnerId.rptOwnerName
         $ownerRelationship = $doc.ownershipDocument.reportingOwner.reportingOwnerRelationship
-        $relationship = ($ownerRelationship | Get-Member -MemberType Properties | Where-Object { $ownerRelationship.$($_.Name) -eq "1" }).Name
+
+        # Get all role flags where value is '1'
+        $relationshipProps = ($ownerRelationship | Get-Member -MemberType Properties | Where-Object {
+            $ownerRelationship.$($_.Name) -eq "1"
+        }).Name
+
+        # Join multiple roles if needed
+        $relationship = if ($relationshipProps.Count -gt 1) {
+            $relationshipProps -join ";"
+        } else {
+            $relationshipProps
+        }
 
         # Собираем footnotes в хештаблицу
         $footnotes = @{}
-
         if ($doc.ownershipDocument.footnotes -and $doc.ownershipDocument.footnotes.footnote) {
             $rawFootnotes = $doc.ownershipDocument.footnotes.footnote
-
-            # Убедимся, что это массив
             if ($rawFootnotes -is [System.Array]) {
                 foreach ($f in $rawFootnotes) {
                     $footnotes[$f.id] = $f.'#text' ?? $f.InnerText
                 }
-            }
-            else {
+            } else {
                 $footnotes[$rawFootnotes.id] = $rawFootnotes.'#text' ?? $rawFootnotes.InnerText
             }
         }
 
         $transactions = $doc.ownershipDocument.nonDerivativeTable.nonDerivativeTransaction
         foreach ($txn in $transactions) {
-            # если есть одна или несколько сносок — собираем их все
             $note = $null
             if ($txn.footnoteId) {
                 $ids = if ($txn.footnoteId -is [System.Array]) {
@@ -164,7 +170,6 @@ function Convert-Form4XmlToRecord {
                 } else {
                     @($txn.footnoteId.id)
                 }
-
                 $note = ($ids | ForEach-Object { $footnotes[$_] }) -join "; "
             }
 

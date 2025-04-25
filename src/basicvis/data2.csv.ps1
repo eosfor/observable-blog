@@ -1,8 +1,6 @@
 . src/basicvis/helper.ps1
 
-$allData = 
-Get-RecentSecForm4XmlUrls -CIK "0000789019" -DaysBack 107 |
-    Convert-Form4XmlToRecord
+$allData = Import-Csv -Path "tmp/x.allData.csv"
 
 $data2 = $allData |
     # Filter only transactions with non-zero number of shares
@@ -37,6 +35,7 @@ $data2 = $allData |
 
         # Return summary object for each (InsiderName, TransactionCode) group
         [PSCustomObject]@{
+            Issuer             = $group[0].Issuer
             Insider            = $parts[0]
             TransactionCode    = $parts[1]
             Count              = $_.Count

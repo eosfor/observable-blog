@@ -1,11 +1,9 @@
 . src/basicvis/helper.ps1
 
-$allData = 
-Get-RecentSecForm4XmlUrls -CIK "0000789019" -DaysBack 107 |
-    Convert-Form4XmlToRecord
+$allData = Import-Csv -Path "tmp/x.allData.csv"
 
 $data = $allData |
-Select-Object TransactionDate, SharesTransacted, TransactionCode |
+Select-Object Issuer, TransactionDate, SharesTransacted, TransactionCode |
 Where-Object { $_.TransactionCode -in @("S", "P", "F", "A", "M", "G") -and $_.SharesTransacted -gt 0 }
 
 $data = $data | ForEach-Object {

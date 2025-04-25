@@ -1,8 +1,6 @@
 . src/basicvis/helper.ps1
 
-$allData = 
-Get-RecentSecForm4XmlUrls -CIK "0000789019" -DaysBack 107 |
-    Convert-Form4XmlToRecord
+$allData = Import-Csv -Path "tmp/x.allData.csv"
 
 $data3 = $allData |
     # Filter transactions with shares > 0 and valid date format (YYYY-MM-DD)
@@ -24,6 +22,7 @@ $data3 = $allData |
 
         # Return a simplified transaction record
         [PSCustomObject]@{
+            Issuer             = $_.Issuer
             Insider            = $_.InsiderName
             TransactionDate    = $_.TransactionDate
             TransactionCode    = $_.TransactionCode

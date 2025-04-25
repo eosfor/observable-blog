@@ -31,6 +31,15 @@ document.querySelectorAll('.observablehq-pre-container').forEach(el => {
 });
 ```
 
+```js
+const allData = await FileAttachment("allData.csv").csv()
+const uniqueCompanies = [...new Set(allData.map(d => d.Issuer))];
+
+const data1 = await FileAttachment("data1.csv").csv()
+const data2 = await FileAttachment("data2.csv").csv()
+const data3 = await FileAttachment("data3.csv").csv()
+```
+
 You thought PowerShell was just for managing servers? Think again! Today, we`re going to engage in a noble pursuit: **counting other people’s money**. And not just anywhere — we’re diving into the official filings of the U.S. Securities and Exchange Commission (SEC). All from the comfort of the console, with a splash of [Vega](https://vega.github.io) and a hint of analytical mischief.
 
 Our target of curiosity: Form 4, where corporate big shots report their stock transactions:
@@ -128,8 +137,8 @@ function Get-RecentSecForm4XmlUrls {
 
 ```pwsh
 # you can put your CIK here :)
-$allData = Get-RecentSecForm4XmlUrls -CIK "0000789019" ` # who is that?
-    -DaysBack 107 | Convert-Form4XmlToRecord
+$CIKs = "0000789019", "0000320193", "0001318605", "0001288776", "0001352010" # who is that?
+$allData = $CIKs | % { Get-RecentSecForm4XmlUrls -CIK $_  -DaysBack ((Get-Date).DayOfYear) } | Convert-Form4XmlToRecord
 ```
 
 🧹 Next step — let's clean house. We only care about transactions where money actually moved. If the number of shares is 0 — skip it. We`re here for the real million-dollar moves (or at least a few solid trades).
@@ -158,6 +167,12 @@ $data = $data | ForEach-Object {
 
 ## Scatter plot
 
+To make it more fun, we can also add a bit of interactivity to this page :)
+
+```js
+const companySelected = view(Inputs.select(uniqueCompanies, {value: "MICROSOFT CORP"}));
+```
+
 📈 Scatter Plot — our first visual interrogation:
 - X — transaction date
 - Y — number of shares
@@ -167,14 +182,17 @@ $data = $data | ForEach-Object {
 A quick way to spot who knew what and sold just in time 💸
 
 ```js
-const data = await FileAttachment("data1.csv").url()
+const filteredData1 = data1.filter(d => d.Issuer === companySelected)
+```
+
+```js
+
 const chart = await vl.render({
 spec:{
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Insider Trading Scatter Plot",
   "data": {
-    "url": data,
-    "format": {type: "csv"}
+    "values" : filteredData1
   },
   "mark": "point",
   "encoding": {
@@ -219,18 +237,20 @@ display(chart)
 
 Anyone can make mistakes — but heatmaps? They never lie. 💼
 
+```js
+const filteredData2 = data2.filter(d => d.Issuer === companySelected)
+```
+
 <div class="grid grid-cols-2">
   <div class="card">
 
  ```js
-const data2 = await FileAttachment("data2.csv").url()
 const chart2 = await vl.render({
 spec:{
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Heatmap of Insider Transaction Totals",
   "data": {
-    "url": data2,
-    "format": {"type": "csv"}
+    "values": filteredData2
   },
   "mark": "rect",
   "encoding": {
@@ -307,16 +327,19 @@ display(chart2);
 
 Makes it pretty obvious who burst the greed bubble first 😄
 
+```js
+const filteredData3 = data3.filter(d => d.Issuer === companySelected)
+display(filteredData3)
+```
+
 
 ```js
-const data3 = await FileAttachment("data3.csv").url()
 const chart3 = await vl.render({
 spec:{
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "description": "Bubble Chart: Insider vs Date vs Transaction Type",
   "data": {
-    "url": data3,
-    "format": { "type": "csv" }
+    "values": filteredData3
   },
   "transform": [
     {
