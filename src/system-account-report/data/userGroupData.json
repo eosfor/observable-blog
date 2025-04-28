@@ -1,0 +1,174 @@
+{
+  "name": "grousRoot",
+  "children": [
+    {
+      "name": "Psi Corps - MSFT Operations",
+      "children": [],
+      "value": 0
+    },
+    {
+      "name": "Rangers - NetOps Unit",
+      "children": [
+        {
+          "name": "John Sheridan",
+          "value": 1
+        },
+        {
+          "name": "Delenn",
+          "value": 1
+        }
+      ],
+      "value": 2
+    },
+    {
+      "name": "Babylon 5 ML Ops",
+      "children": [
+        {
+          "name": "Susan Ivanova",
+          "value": 1
+        },
+        {
+          "name": "Michael Garibaldi",
+          "value": 1
+        }
+      ],
+      "value": 2
+    },
+    {
+      "name": "Grey Council - DB Admins",
+      "children": [
+        {
+          "name": "John Sheridan",
+          "value": 1
+        },
+        {
+          "name": "Stephen Franklin",
+          "value": 1
+        }
+      ],
+      "value": 2
+    },
+    {
+      "name": "Minbari Technical Advisors",
+      "children": [
+        {
+          "name": "Londo Mollari",
+          "value": 1
+        },
+        {
+          "name": "G'Kar",
+          "value": 1
+        },
+        {
+          "name": "Kosh Naranek",
+          "value": 1
+        },
+        {
+          "name": "Lyta Alexander",
+          "value": 1
+        },
+        {
+          "name": "Zack Allan",
+          "value": 1
+        },
+        {
+          "name": "Marcus Cole",
+          "value": 1
+        }
+      ],
+      "value": 6
+    },
+    {
+      "name": "Vorlon Observers",
+      "children": [
+        {
+          "name": "Lennier",
+          "value": 1
+        }
+      ],
+      "value": 1
+    },
+    {
+      "name": "White Star DevOps Squadron",
+      "children": [
+        {
+          "name": "John Sheridan",
+          "value": 1
+        }
+      ],
+      "value": 36
+    },
+    {
+      "name": "Anla'Shok QA Unit",
+      "children": [
+        {
+          "name": "Londo Mollari",
+          "value": 1
+        }
+      ],
+      "value": 7
+    },
+    {
+      "name": "Babcom Data Division",
+      "children": [
+        {
+          "name": "John Sheridan",
+          "value": 1
+        }
+      ],
+      "value": 6
+    },
+    {
+      "name": "Sigil 9 Backup Corps",
+      "children": [
+        {
+          "name": "Vir Cotto",
+          "value": 1
+        }
+      ],
+      "value": 1
+    },
+    {
+      "name": "Station Systems Command",
+      "children": [
+        {
+          "name": "John Sheridan",
+          "value": 1
+        }
+      ],
+      "value": 9
+    },
+
+    {
+      "name": "Babylon QA Team",
+      "children": [
+        {
+          "name": "Talia Winters",
+          "value": 1
+        }
+      ],
+      "value": 2
+    },
+    {
+      "name": "Babylon 5 Operations Support",
+      "children": [
+        {
+          "name": "Lyta Alexander",
+          "value": 1
+        }
+      ],
+      "value": 14
+    },
+    {
+      "name": "Babcom Client Interface",
+      "children": [
+        {
+          "name": "Byron",
+          "value": 1
+        }
+      ],
+      "value": 3
+    }
+  ],
+  "value": 1
+}

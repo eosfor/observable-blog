@@ -12,7 +12,9 @@
     "@observablehq/framework": "^1.7.0",
     "d3-sankey": "^0.12.3",
     "gray-matter": "^4.0.3",
-    "markdown-it-container": "^4.0.0"
+    "markdown-it-container": "^4.0.0",
+    "vega": "^6.1.2",
+    "vega-embed": "^7.0.2"
   },
   "devDependencies": {
     "rimraf": "^5.0.5"
